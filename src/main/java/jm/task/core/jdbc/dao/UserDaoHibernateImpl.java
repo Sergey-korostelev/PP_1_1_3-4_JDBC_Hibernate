@@ -5,9 +5,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-
 import javax.persistence.Query;
-import java.sql.ResultSet;
 import java.util.List;
 
 import static jm.task.core.jdbc.util.Util.ConnectHibernate;
