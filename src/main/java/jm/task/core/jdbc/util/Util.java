@@ -16,17 +16,17 @@ import java.sql.SQLException;
 
 public class Util {
     private static SessionFactory sessionFactory;
-    final static String driver = "com.mysql.cj.jdbc.Driver";
-    final static String urlTask2 = "jdbc:mysql://localhost:3306/task2?useSSL=false";
-    final static String user = "Coloredkor";
-    final static String pass = "root";
-    final static String dialect = "org.hibernate.dialect.MySQL5Dialect";
-    final static String show = "true";
-    final static String currentSession = "thread";
+    final static String DRIVER = "com.mysql.cj.jdbc.Driver";
+    final static String URLTASK2 = "jdbc:mysql://localhost:3306/task2?useSSL=false";
+    final static String USER = "Coloredkor";
+    final static String PASS = "root";
+    final static String DIALECT = "org.hibernate.dialect.MySQL5Dialect";
+    final static String SHOW = "true";
+    final static String CURRENT_SESSION = "thread";
 
     public static Connection Connect() {
         try {
-            Class.forName(driver).getDeclaredConstructor().newInstance();
+            Class.forName(DRIVER).getDeclaredConstructor().newInstance();
         } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException |
                  InvocationTargetException e) {
             System.out.println("Connection failed...");
@@ -34,7 +34,7 @@ public class Util {
         }
         try {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/task1",
-                    user, pass);
+                    USER, PASS);
             return conn;
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -45,14 +45,14 @@ public class Util {
         try {
             Configuration configuration = new Configuration();
             Properties settings = new Properties();
-            settings.put(Environment.DRIVER, driver);
-            settings.put(Environment.URL, urlTask2);
-            settings.put(Environment.USER, user);
-            settings.put(Environment.PASS, pass);
-            settings.put(Environment.DIALECT, dialect);
-            settings.put(Environment.SHOW_SQL, show);
-            settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, currentSession);
-            settings.put(Environment.HBM2DDL_AUTO, "");
+            settings.put(Environment.DRIVER, DRIVER);
+            settings.put(Environment.URL, URLTASK2);
+            settings.put(Environment.USER, USER);
+            settings.put(Environment.PASS, PASS);
+            settings.put(Environment.DIALECT, DIALECT);
+            settings.put(Environment.SHOW_SQL, SHOW);
+            settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, CURRENT_SESSION);
+            settings.put(Environment.HBM2DDL_AUTO, "none");
             configuration.setProperties(settings);
             configuration.addAnnotatedClass(User.class);
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
